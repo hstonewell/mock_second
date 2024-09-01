@@ -12,24 +12,44 @@ class Shop extends Model
     public function area()
     {
         /* 店0以上:エリア1 */
-        return $this->hasMany(Area::class);
+        return $this->belongsTo(Area::class);
     }
 
     public function genre()
     {
         /* 店0以上:ジャンル1 */
-        return $this->hasMany(Genre::class);
+        return $this->belongsTo(Genre::class);
     }
 
     public function bookmark()
     {
         /* 店1:お気に入り0以上 */
-        return $this->belongsTo(Bookmark::class);
+        return $this->hasMany(Bookmark::class);
     }
 
     public function booking()
     {
         /* 店1:予約0以上 */
-        return $this->belongsTo(Booking::class);
+        return $this->hasMany(Booking::class);
+    }
+
+    /* 検索 */
+    public function scopeAreaSearch($query, $area_id)
+    {
+        if (!empty($area_id)) {
+            $query->where('area_id', $area_id);
+        }
+    }
+    public function scopeGenreSearch($query, $genre_id)
+    {
+        if (!empty($genre_id)) {
+            $query->where('genre_id', $genre_id);
+        }
+    }
+    public function scopeKeywordSearch($query, $keyword)
+    {
+        if (!empty($keyword)) {
+            $query->where('shop_name', 'like', '%' . $keyword . '%');
+        }
     }
 }

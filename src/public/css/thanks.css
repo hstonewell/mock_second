@@ -1,0 +1,39 @@
+/* サンクスページ */
+.thanks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 35%;
+    height: 35vh;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.4);
+    background-color: #fff;
+    padding: 30px 20px;
+}
+
+.thanks__item {
+    display: flex;
+    justify-content: column;
+    padding: 15px;
+}
+
+.thanks--logo {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.thanks--button {
+    background-color: #3560F6;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 8px 15px;
+    font-size: 16px;
+}
+
+.thanks--button:hover {
+    opacity: 0.8;
+}

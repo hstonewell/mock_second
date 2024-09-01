@@ -21,7 +21,6 @@ trait PasswordValidationRules
                 ->mixedCase()
                 ->numbers()
                 ->symbols(),
-            'confirmed'
         ];
     }
 }

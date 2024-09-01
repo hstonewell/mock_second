@@ -1,0 +1,68 @@
+/* 登録・ログインフォーム */
+.register-form {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.4);
+    background-color: #fff;
+}
+
+.register-form__header {
+    background-color: #3560F6;
+    border-radius: 5px 5px 0px 0px;
+    height: 40%;
+    padding: 0px 15px;
+}
+
+.register-form__header--logo {
+    color: #fff;
+    font-weight: normal;
+    font-size: 18px;
+}
+
+.register-form__content {
+    padding: 15px 20px;
+}
+
+.register-form__item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 15px 10px 15px;
+}
+
+.register-form__item:last-child {
+    justify-content: right;
+}
+
+.register-form__input {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #000;
+    width: 90%;
+    font-size: 18px;
+}
+
+.register-form__input:focus {
+    border-bottom: 1px solid #3560F6;
+}
+
+.register-form__error-message {
+    color: #FF9494;
+    margin: 0px 45px;
+}
+
+.register-form--button {
+    background-color: #3560F6;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 8px 15px;
+    font-size: 18px;
+}
+
+.register-form--button:hover {
+    opacity: 0.8;
+}

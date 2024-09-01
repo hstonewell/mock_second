@@ -1,0 +1,180 @@
+.mypage__wrapper {
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.mypage-wrapper__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.mypage-title__left {
+    width: 30%;
+    margin: 20px;
+}
+
+.mypage-title__right {
+    width: 55%;
+    margin: 20px;
+}
+
+.mypage__title {
+    font-size: 20px;
+}
+
+.mypage__name {
+    font-size: 24px;
+}
+
+.mypage-wrapper__main {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 予約 */
+.mypage__inner--booking {
+    width: 30%;
+    margin: 0px 20px;
+}
+
+.booking__card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.4);
+    background-color: #3560F6;
+    padding: 15px 20px 25px 20px;
+    margin-top: 10px;
+}
+
+.booking__card--header {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    color: #fff;
+}
+
+.booking__card--header i {
+    width: 10%;
+}
+
+.booking__card--header p {
+    width: 70%;
+    height: auto;
+    text-align: left;
+    padding-bottom: 5px;
+}
+
+.booking__card--table {
+    color: #fff;
+    text-align: left;
+    line-height: 2em;
+}
+
+.booking__card--table th {
+    width: 30%;
+}
+
+.booking__card--table td {
+    width: 70%;
+}
+
+/* お店カード */
+.mypage__inner--bookmark {
+    width: 55%;
+    margin: 0px 20px;
+}
+
+.bookmark__cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.shops__card {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.4);
+    background-color: #fff;
+    margin-top: 10px;
+}
+
+.shops__card:nth-of-type(n+5) {
+    margin-top: 15px;
+}
+
+.shops__card--img {
+    margin: 0;
+}
+
+.shops__card--img img{
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.shops__card--unit {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+.shops__card--title {
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+}
+
+.shops__card--tags {
+    font-size: 14px;
+    padding-bottom: 10px;
+}
+
+.shops__card--tags a {
+    color: #000;
+    text-decoration: none;
+}
+.shops__card--tags a:hover {
+    opacity: 0.8;
+}
+
+.shops__card--footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.shops__card--more {
+    background-color: #3560F6;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px 15px;
+    font-size: 16px;
+}
+
+.shops__card--more:hover {
+    opacity: 0.8;
+}
+
+.shops__card--bookmark {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.shops__card--bookmark:hover {
+    opacity: 0.8;
+}
+
+/* お店詳細モーダル */

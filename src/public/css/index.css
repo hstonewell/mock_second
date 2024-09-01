@@ -1,0 +1,156 @@
+/* 検索機能 */
+.shop-search__form {
+    width: 50%;
+}
+
+.shop-search__box {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 8px 15px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.4);
+}
+
+.shop-search--select {
+    width: 22%;
+    border: none;
+    font-size: 16px;
+}
+
+.shop-search--text {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    width: 50%;
+}
+
+.shop-search--icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.shop-search--input {
+    border: none;
+    line-height: 2em;
+    font-size: 16px;
+    width: 80%;
+}
+
+.shop-search--input:focus {
+    outline: none;
+}
+
+.shop-search--select:focus {
+    outline: none;
+}
+
+/* お店一覧 */
+.shops__wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 90vw;
+}
+
+.shops__wrapper::before {
+    content: "";
+        display: block;
+        width: 23%;
+        order: 1;
+    }
+
+.shops__wrapper::after {
+    content: "";
+    display: block;
+    width: 23%;
+}
+
+
+/* お店カード */
+.shops__card {
+    width: 24%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.4);
+    background-color: #fff;
+    margin-top: 10px;
+}
+
+.shops__card:nth-of-type(n+5) {
+    margin-top: 15px;
+}
+
+.shops__card--img {
+    margin: 0;
+}
+
+.shops__card--img img{
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.shops__card--unit {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+.shops__card--title {
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+}
+
+.shops__card--tags {
+    font-size: 14px;
+    padding-bottom: 10px;
+}
+
+.shops__card--tags a {
+    color: #000;
+    text-decoration: none;
+}
+.shops__card--tags a:hover {
+    opacity: 0.8;
+}
+
+.shops__card--footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.shops__card--more {
+    background-color: #3560F6;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px 15px;
+    font-size: 16px;
+}
+
+.shops__card--more:hover {
+    opacity: 0.8;
+}
+
+.shops__card--bookmark {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.shops__card--bookmark:hover {
+    opacity: 0.8;
+}
+
+/* お店詳細モーダル */
