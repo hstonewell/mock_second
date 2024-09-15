@@ -41,7 +41,7 @@
                 <a href="{{ route('search', ['genre_id' => $shop->genre->id])}}">&#035;{{ $shop->genre->genre_name }}</a>
             </div>
             <div class="shops__card--footer">
-                <button class="shops__card--more">詳しくみる</button>
+                <a href="{{ route('detail', ['shop_id'=>$shop->id]) }}" class="shops__card--more">詳しくみる</a>
                 @if(Auth::check())
                 @if(in_array($shop->id, $bookmark))
                 <form action="{{ route('destroyBookmark', $shop->id) }}" method="POST">
