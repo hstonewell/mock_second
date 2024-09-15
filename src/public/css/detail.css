@@ -1,0 +1,144 @@
+.shopd-detail__wrapper {
+    width: 90vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.shop-detail__block {
+    width: 47%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* お店の詳細 */
+.shop-detail__block img{
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.shop-detail__title{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 15px 0px;
+    margin: 0;
+}
+
+.shop-detail--back {
+    height: 25px;
+    width: 25px;
+    background-color: #fff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
+    margin-right: 10px;
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+}
+
+
+.shop-name {
+    font-size: 24px;
+}
+
+.shop-tags {
+    display: flex;
+    font-size: 14px;
+}
+
+.shop-tags p{
+    margin-right: 5px;
+}
+
+/* 予約 */
+.booking__box {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.4);
+    background-color: #3560F6;
+    flex-grow: 1;
+}
+
+.booking__title {
+    color: white;
+    margin: 20px 20px;
+}
+
+.booking__box--main {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+}
+
+.booking-form {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 20px;
+}
+
+.booking-date {
+    width: 40%;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 10px;
+    line-height: 2em;
+    padding: 0px 5px;
+}
+
+.booking-select {
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 10px;
+    line-height: 2em;
+    padding: 0px 5px;
+}
+
+.booking-confirm__box {
+    color: #fff;
+    background-color: #5580F7;
+    text-align: left;
+    border-radius: 5px;
+    line-height: 1.5em;
+    padding: 15px;
+    margin: 10px 30px 15px 30px;
+}
+
+.booking-confirm__box th {
+    width: 30%;
+    font-weight: normal;
+}
+
+.booking-confirm__box td {
+    width: 70%;
+}
+
+.booking__box--footer {
+    width: 100%;
+    position: sticky;
+    top: 100%;
+    border-radius: 0px 0px 5px 5px;
+    background-color: #003FF5;
+    padding: 10px 0px;
+    text-align: center;
+}
+
+.booking-submit {
+    font-size: 16px;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    appearance: none;
+    line-height: 2em;
+}
+
+.booking__box--footer:hover {
+    opacity: 0.8;
+}
