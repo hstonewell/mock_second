@@ -15,7 +15,6 @@
     <header class="header">
         <div class="header__inner">
             @livewire('menu')
-            <h1 class="header__logo">Rese</h1>
             @yield('search')
         </div>
     </header>

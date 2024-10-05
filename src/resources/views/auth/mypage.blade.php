@@ -19,31 +19,38 @@
     <div class="mypage-wrapper__main">
 
         <div class="mypage__inner--booking">
+            @foreach($userBookings as $booking)
             <div class="booking__card">
                 <div class="booking__card--header">
                     <i class="fa-solid fa-clock fa-xl" style="color: #ffffff;"></i>
-                    <p>予約番号</p>
-                    <i class="fa-regular fa-circle-xmark fa-xl" style="color: #ffffff;"></i>
+                    <p>{{ sprintf('%04d', $loop->iteration) }}</p>
+                    <form action="{{ route('destroyBooking') }}" method="POST">
+                        @method('DELETE')
+                        @csrf
+                        <input type="hidden" name="id" value="{{ $booking['id'] }}">
+                        <button type="submit" class="booking__card--submit"><i class="fa-regular fa-circle-xmark fa-xl" style="color: #ffffff;"></i></button>
+                    </form>
                 </div>
                 <table class="booking__card--table">
                     <tr>
                         <th>Shop</th>
-                        <td>お店の名前</td>
+                        <td>{{ $booking->shop->shop_name }}</td>
                     </tr>
                     <tr>
                         <th>Date</th>
-                        <td>日付</td>
+                        <td>{{ $booking->date }}</td>
                     </tr>
                     <tr>
                         <th>Time</th>
-                        <td>時間</td>
+                        <td>{{ substr($booking->time, 0, 5 ) }}</td>
                     </tr>
                     <tr>
                         <th>Number</th>
-                        <td>人数</td>
+                        <td>{{ $booking->number }}</td>
                     </tr>
                 </table>
             </div>
+            @endforeach
         </div>
 
         <div class="mypage__inner--bookmark">

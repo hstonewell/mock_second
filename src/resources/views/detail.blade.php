@@ -12,7 +12,7 @@
 <div class="shopd-detail__wrapper">
     <div class="shop-detail__block">
         <div class="shop-detail__title">
-            <a href="{{ url()->previous() }}" class="shop-detail--back">&lt;</a>
+            <a href="/" class="shop-detail--back">&lt;</a>
             <h2 class="shop-name">{{ $shop->shop_name }}</h2>
         </div>
         <img src="{{ $shop->image }}" alt="{{ $shop->shop_name }}">
@@ -29,9 +29,6 @@
             <h2 class="booking__title">予約</h2>
             <div class="booking__box--main">
                 @livewire('confirm', ['shop' => $shop])
-            </div>
-            <div class="booking__box--footer">
-                <button class="booking-submit" type="submit">予約する</button>
             </div>
         </div>
     </div>
