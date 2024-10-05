@@ -15,8 +15,8 @@ class CreateBookmarksTable extends Migration
     {
         Schema::create('bookmarks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('shop_id');
-            $table->foreignId('user_id');
+            $table->foreignId('shop_id')->constrained();
+            $table->foreignId('user_id')->constrained();
         });
     }
 
