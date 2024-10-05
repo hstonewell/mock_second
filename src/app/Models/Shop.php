@@ -30,7 +30,7 @@ class Shop extends Model
     public function booking()
     {
         /* 店1:予約0以上 */
-        return $this->hasMany(Booking::class);
+        return $this->hasMany(Booking::class, 'shop_id');
     }
 
     /* 検索 */

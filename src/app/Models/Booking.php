@@ -9,9 +9,19 @@ class Booking extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'shop_id',
+        'user_id',
+        'date',
+        'time',
+        'number'
+    ];
+
     public function shop()
     {
-        return $this->belongsTo(Shop::class);
+        return $this->belongsTo(Shop::class, 'shop_id');
     }
 
     public function user()
