@@ -17,25 +17,22 @@ use App\Http\Controllers\ShopController;
 */
 
 Route::get('/', [ShopController::class, 'index']);
-
 Route::get('/menu', [RegisterController::class, 'menu']);
+Route::get('/search', [ShopController::class, 'search'])->name('search');
+Route::get('/detail/{shop_id}', [ShopController::class, 'detail'])->name('detail');
 
+//ログイン・認証
 Route::get('/register', [RegisterController::class, 'create'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/thanks', [RegisterController::class, 'viewThanks']);
 
 
-    Route::get('/mypage', [ShopController::class, 'viewMyPage']);
-
+//予約・お気に入り
 Route::middleware('auth')->group(function(){
-
     Route::post('/bookmarks', [ShopController::class, 'storeBookmark'])->name('storeBookmark');
     Route::delete('/bookmarks', [ShopController::class, 'destroyBookmark'])->name('destroyBookmark');
-//    Route::post('/bookings', [ShopController::class, 'storeBooking']);
-//    Route::post('/bookings', [ShopController::class, 'destroyBooking']);
-//    Route::get('/done', [ShopController::class, 'viewDone']);
+    Route::get('/mypage', [ShopController::class, 'viewMyPage'])->name('viewMypage');
+    Route::post('/bookings', [ShopController::class, 'storeBooking'])->name('storeBooking');;
+    Route::delete('/bookings', [ShopController::class, 'destroyBooking'])->name('destroyBooking');
+    Route::get('/done', [ShopController::class, 'viewDone'])->name('done');
 });
-
-//Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
-
-Route::get('/search', [ShopController::class, 'search'])->name('search');
