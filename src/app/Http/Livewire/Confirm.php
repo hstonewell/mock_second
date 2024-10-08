@@ -9,8 +9,6 @@ use App\Models\Area;
 use App\Models\Bookmark;
 use App\Models\Genre;
 
-use Illuminate\Support\Facades\Log;
-
 use Carbon\Carbon;
 
 class Confirm extends Component
@@ -20,20 +18,42 @@ class Confirm extends Component
     public $time;
     public $number;
     public $timeCarbon;
+    public $timeSlots = [];
 
     public function mount($shop)
     {
         //最短の予約時間は60分後（15分単位で切り上げ）
+        $now = Carbon::now();
         $earliestTime = 60;
         $roundUp = 15;
 
-        $roundedTime = Carbon::now()->addMinutes($earliestTime + $roundUp - Carbon::now()->minute % $roundUp);
+        $roundedTime = $now->copy()->addMinutes($earliestTime + $roundUp - $now->minute % $roundUp);
 
         $this->shop = $shop;
-        $this->date = $roundedTime->toDateString();
-        $this->time = $roundedTime->format('H:i');
-        $this->timeCarbon = $roundedTime->setSeconds(0)->setMicro(0);
+
+        if ($roundedTime->hour < 2) {
+            // 午前0時〜2時の場合、前日の日付として扱う
+            $yesterday = $roundedTime->copy()->subDay(1);
+            $this->date = $yesterday->toDateString();
+            $this->time = sprintf('%02d:%02d', $roundedTime->hour + 24, $roundedTime->minute);
+            $this->timeCarbon = $roundedTime->copy()->setSeconds(0)->setMicro(0);
+        } else {
+            // 通常の処理
+            $this->date = $roundedTime->toDateString();
+            $this->time = $roundedTime->format('H:i');
+            $this->timeCarbon = $roundedTime->copy()->setSeconds(0)->setMicro(0);
+        }
+
         $this->number = 1;
+        $this->timeSlots = $this->generateTimeSlots();
+    }
+
+    public function updatedDate($value)
+    {
+        $this->date = $value;
+
+        // 日付が変更されたらタイムスロットを再生成
+        $this->timeSlots = $this->generateTimeSlots();
     }
 
     public function updatedTime($value)
@@ -48,46 +68,59 @@ class Confirm extends Component
 
     public function render()
     {
-        $minDate = Carbon::today()->toDateString();
-        $maxDate = Carbon::now()->addMonth(3)->toDateString();
+        $now = Carbon::now();
 
-        $startTime =
-            Carbon::createFromTime(12, 0);
-        $endTime =
-            Carbon::createFromTime(26, 0);
-        $timeSlots = $this->generateTimeSlots($startTime, $endTime);
+        if ($now->hour < 1) {
+            $minDate = $now->copy()->subDay()->toDateString();
+        } else {
+            $minDate = $now->copy()->toDateString();
+        }
+        $maxDate = $now->addMonth(3)->toDateString();
 
-        $isToday = Carbon::parse($this->date)->isToday();
+        $timeSlots = $this->generateTimeSlots();
 
-        return view('livewire.confirm', compact('minDate', 'maxDate', 'timeSlots', 'isToday'));
+        return view('livewire.confirm', compact('minDate', 'maxDate', 'timeSlots'));
     }
 
     private function generateTimeSlots()
     {
+        $now = Carbon::now();
+
+        //予約可能時間は12-26時
         $startHour = 12;
-        $endHour = 25;
+        $endHour = 26;
         $timeSlots = [];
+
+        // 0〜2時の場合、前日分のタイムスロットを表示
+        if ($now->hour < 2) {
+            $day = $now->copy()->subDay();  // 前日のスロットを表示
+        } else {
+            $day = $now->copy();  // 当日のスロットを表示
+        }
 
         for ($hour = $startHour; $hour <= $endHour; $hour++) {
             for ($minute = 0; $minute < 60; $minute += 15) {
-                // 24時を超えた場合の時間フォーマット
-                if ($hour >= 24) {
-                    $formattedHour = $hour - 24 + 24;
-                    $time = sprintf('%02d:%02d', $formattedHour, $minute);
-                    $carbonTime = Carbon::today()->setTime($hour - 24, $minute);
-                } else {
-                    $time = sprintf('%02d:%02d', $hour, $minute);
-                    $carbonTime = Carbon::today()->setTime($hour, $minute)->setSeconds(0)->setMicro(0);
+
+                if ($hour < 24) {
+                    $displayTime = sprintf('%02d:%02d', $hour, $minute);
+                    $carbonTime = $day->copy()->setTime($hour, $minute)->setSeconds(0)->setMicro(0);
+                }
+                // 24時以降の時間帯
+                else {
+                    $displayTime = sprintf('%02d:%02d', $hour - 24 + 24, $minute);
+                    $carbonTime = $day->copy()->addDay()->setTime($hour - 24, $minute)->setSeconds(0)->setMicro(0);
                 }
 
-                $isToday = Carbon::parse($this->date)->isToday();
-                $asToday = $isToday && $carbonTime->hour < 27;
-
-                $isDisabled = $asToday && $carbonTime->lt($this->timeCarbon);
+                // 無効化の判定
+                if (Carbon::parse($this->date)->toDateString() == $day->toDateString()) {
+                    $isDisabled = $carbonTime->lt($this->timeCarbon);
+                } else {
+                    $isDisabled = false;
+                }
 
                 $timeSlots[] = [
-                    'timeString' => $time,  // 表示用の時間
-                    'isDisabled' => $isDisabled,
+                    'displayTime' => $displayTime,  // 表示用の時間
+                    'isDisabled' => $isDisabled,   // 無効化フラグ
                 ];
             }
         }
