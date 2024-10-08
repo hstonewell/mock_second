@@ -1,3 +1,7 @@
+html {
+    font-size: 87.5%;
+}
+
 /* 検索機能 */
 .shop-search__form {
     width: 50%;
@@ -98,8 +102,10 @@
 }
 
 .shops__card--unit {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     padding: 15px;
 }
 
@@ -110,8 +116,10 @@
 }
 
 .shops__card--tags {
-    font-size: 14px;
+    font-size: clamp(0.9rem, 1rem, 1.2rem);
     padding-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .shops__card--tags a {
@@ -126,6 +134,8 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
 }
 
 .shops__card--more {
@@ -137,7 +147,7 @@
     border-radius: 5px;
     cursor: pointer;
     padding: 5px 15px;
-    font-size: 16px;
+    font-size: clamp(0.7rem, 1.7vw, 1.1rem);
 }
 
 .shops__card--more:hover {
@@ -154,4 +164,52 @@
     opacity: 0.8;
 }
 
-/* お店詳細モーダル */
+/* レスポンシブ */
+@media screen and (max-width: 768px) {
+    .shop-search__form {
+        width: 70%;
+    }
+    .shops__wrapper::before {
+        width: 32%;
+    }
+    .shops__wrapper::after {
+        width: 32%;
+    }
+    .shops__card {
+        width: 32%;
+    }
+    .shops__card:nth-of-type(n+4) {
+        margin-top: 15px;
+    }
+    .shops__card--more {
+        padding: 5px 10px;
+    }
+    i.fa-heart {
+        font-size: 1.7em;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .shop-search__form {
+        width: 90%;
+    }
+    .shops__wrapper::before {
+        width: 48%;
+    }
+
+    .shops__wrapper::after {
+        width: 48%;
+    }
+    .shops__card {
+        width: 48%;
+    }
+    .shops__card:nth-of-type(n+3) {
+        margin-top: 15px;
+    }
+    .shops__card--more {
+        padding: 5px 5px;
+    }
+    i.fa-heart {
+        font-size: 1.5em;
+    }
+}
