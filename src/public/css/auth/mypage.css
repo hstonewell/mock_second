@@ -1,32 +1,46 @@
+html {
+    font-size: 87.5%;
+}
 .mypage__wrapper {
     width: 90vw;
+}
+
+.mypage__wrapper__inner {
+    width: 90vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.mypage__inner--left {
+    width: 40%;
+}
+
+.mypage__inner--right {
+    width: 55%;
+}
+
+.mypage__inner--left,
+.mypage__inner--right {
     display: flex;
     flex-direction: column;
 }
 
-.mypage-wrapper__header {
-    width: 100%;
+
+.mypage__inner--title {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-}
-
-.mypage-title__left {
-    width: 30%;
-    margin: 20px;
-}
-
-.mypage-title__right {
-    width: 55%;
-    margin: 20px;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 10vh;
 }
 
 .mypage__title {
     font-size: 20px;
+    line-height: 1em;
 }
 
 .mypage__name {
     font-size: 24px;
+    line-height: 1em;
 }
 
 .mypage-wrapper__main {
@@ -35,13 +49,7 @@
 }
 
 /* 予約 */
-.mypage__inner--booking {
-    width: 30%;
-    margin: 0px 20px;
-}
-
 .booking__card {
-    width: 100%;
     display: flex;
     flex-direction: column;
     border-radius: 5px;
@@ -51,10 +59,13 @@
     margin-top: 10px;
 }
 
+.booking__card:nth-of-type(n+2) {
+    margin-top: 20px;
+}
+
 .booking__card--header {
     display: flex;
     justify-content: space-between;
-    text-align: center;
     align-items: center;
     color: #fff;
 }
@@ -64,10 +75,10 @@
 }
 
 .booking__card--header p {
-    width: 70%;
+    width: 75%;
     height: auto;
     text-align: left;
-    padding-bottom: 5px;
+    padding: 10px, 0px, 5px, 10px;
 }
 
 .booking__card--table {
@@ -84,16 +95,24 @@
     width: 70%;
 }
 
-/* お店カード */
-.mypage__inner--bookmark {
-    width: 55%;
-    margin: 0px 20px;
+.booking__card--submit {
+    border: none;
+    outline: none;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: transparent;
 }
 
+.booking__card--submit:hover {
+    opacity: 0.8;
+}
+
+/* お店カード */
 .bookmark__cards {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 .shops__card {
@@ -123,7 +142,9 @@
 
 .shops__card--unit {
     display: flex;
+    flex-grow: 1;
     flex-direction: column;
+    justify-content: space-between;
     padding: 15px;
 }
 
@@ -134,8 +155,10 @@
 }
 
 .shops__card--tags {
-    font-size: 14px;
+    font-size: clamp(0.9rem, 1rem, 1.2rem);
     padding-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .shops__card--tags a {
@@ -150,6 +173,8 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
 }
 
 .shops__card--more {
@@ -161,7 +186,7 @@
     border-radius: 5px;
     cursor: pointer;
     padding: 5px 15px;
-    font-size: 16px;
+    font-size: clamp(1rem, 1.7vw, 1.1rem);
 }
 
 .shops__card--more:hover {
@@ -176,4 +201,54 @@
 
 .shops__card--bookmark:hover {
     opacity: 0.8;
+}
+
+/* レスポンシブ */
+@media screen and (max-width: 768px) {
+    .mypage__inner--left {
+        width: 50%;
+    }
+    .mypage__inner--right{
+        width: 45%;
+    }
+    .booking__card--header p {
+        width: 65%;
+    }
+    .shops__card {
+        width: 100%;
+    }
+    .shops__card:nth-of-type(n+2) {
+        margin-top: 15px;
+    }
+    .shops__card--more {
+        padding: 5px 10px;
+    }
+    i.fa-heart {
+        font-size: 1.7em;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .mypage__wrapper__inner {
+        flex-direction: column;
+    }
+    .mypage__inner--left {
+        width: 100%;
+    }
+    .mypage__inner--right {
+        width: 100%;
+        padding-top: 80px;
+    }
+    .booking__card--table {
+        line-height: 1.2em;
+    }
+    .booking__card {
+        padding: 10px 20px 15px 20px;
+    }
+    .shops__card {
+        width: 100%;
+    }
+    .shops__card--more {
+        padding: 5px 5px;
+    }
 }
