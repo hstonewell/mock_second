@@ -9,7 +9,7 @@ class Genre extends Model
 {
     use HasFactory;
 
-    public function shop()
+    public function shops()
     {
         return $this->hasMany(Shop::class);
     }

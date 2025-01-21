@@ -21,13 +21,13 @@ class Shop extends Model
         return $this->belongsTo(Genre::class);
     }
 
-    public function bookmark()
+    public function bookmarks()
     {
         /* 店1:お気に入り0以上 */
         return $this->hasMany(Bookmark::class);
     }
 
-    public function booking()
+    public function bookings()
     {
         /* 店1:予約0以上 */
         return $this->hasMany(Booking::class, 'shop_id');

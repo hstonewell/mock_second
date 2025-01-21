@@ -13,7 +13,8 @@ class Area extends Model
         'area_name'
     ];
 
-    public function shop() {
+    public function shops()
+    {
         return $this->hasMany(Shop::class);
     }
 }
