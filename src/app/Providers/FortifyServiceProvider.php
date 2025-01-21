@@ -12,8 +12,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
-use App\Http\Controllers\RegisterController;
-use Laravel\Fortify\Http\Controllers\RegisteredUserController;
+use Laravel\Fortify\Contracts\LogoutResponse;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -22,16 +21,18 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(
-            RegisteredUserController::class,
-            RegisterController::class
-        );
-
         Fortify::loginView(function () {
             return view('auth.login');
         });
         Fortify::registerView(function () {
             return view('auth.register');
+        });
+        $this->app->instance(LogoutResponse::class, new class implements LogoutResponse
+        {
+            public function toResponse($request)
+            {
+                return redirect('login');
+            }
         });
     }
 
@@ -44,9 +45,11 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
-
+        Fortify::verifyEmailView(function () {
+            return view('auth.verify');
+        });
         RateLimiter::for('login', function (Request $request) {
-            $throttleKey = Str::transliterate(Str::lower($request->input(Fortify::username())).'|'.$request->ip());
+            $throttleKey = Str::transliterate(Str::lower($request->input(Fortify::username())) . '|' . $request->ip());
 
             return Limit::perMinute(5)->by($throttleKey);
         });
