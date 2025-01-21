@@ -12,7 +12,6 @@ use App\Models\Genre;
 use App\Models\Booking;
 
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Redis;
 
 class ShopController extends Controller
 {
