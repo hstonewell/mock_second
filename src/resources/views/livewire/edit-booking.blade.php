@@ -1,7 +1,7 @@
 <div>
     <!-- 編集ボタン -->
     <button wire:click="openEditBooking()" type="button" class="booking__card--submit">
-        <i class="fa-regular fa-pen-to-square fa-xl" style="color: #ffffff;"></i>
+        <i class="fa-regular fa-pen-to-square fa-2xl" style="color: #ffffff;"></i>
     </button>
 
     <!-- モーダルの表示 -->

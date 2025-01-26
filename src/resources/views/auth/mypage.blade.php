@@ -18,11 +18,11 @@
                         <i class="fa-solid fa-clock fa-xl" style="color: #ffffff;"></i>
                         <p>{{ sprintf('%05d', $loop->iteration) }}</p>
                         @livewire('edit-booking', ['booking_id' => $booking->id])
-                        <form action="{{ route('destroyBooking') }}" method="POST">
+                        <form action="{{ route('destroy.booking') }}" method="POST">
                             @method('DELETE')
                             @csrf
                             <input type="hidden" name="id" value="{{ $booking['id'] }}">
-                            <button type="submit" class="booking__card--submit"><i class="fa-regular fa-circle-xmark fa-xl" style="color: #ffffff;"></i></button>
+                            <button type="submit" class="booking__card--submit"><i class="fa-regular fa-circle-xmark fa-2xl" style="color: #ffffff;"></i></button>
                         </form>
                     </div>
                     <table class="booking__card--table">
@@ -66,8 +66,8 @@
                                 <a href="{{ route('search', ['genre_id' => $shop->genre->id])}}">&#035;{{ $shop->genre->genre_name }}</a>
                             </div>
                             <div class="shops__card--footer">
-                                <a href="{{ route('detail', ['shop_id'=>$shop->id]) }}" class="shops__card--more">詳しくみる</a>
-                                <form action="{{ route('destroyBookmark', $shop->id) }}" method="POST">
+                                <a href="{{ route('detail', ['shop_id'=>$shop->id]) }}" class="submit-button">詳しくみる</a>
+                                <form action="{{ route('destroy.bookmark', $shop->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <input type="hidden" name="shop_id" value="{{ $shop->id }}">
