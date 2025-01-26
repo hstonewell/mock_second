@@ -25,10 +25,10 @@
 **Dockerビルド**
 1. `git clone git@github.com:hstonewell/mock_second.git`
 2. DockerDesktopアプリを立ち上げる
-3. `docker-compose up -d --build`
+3. `docker compose up -d --build`
 
 **Laravel環境構築**
-1. `docker-compose exec php bash`
+1. `docker compose exec php bash`
 2. `composer install`
 3. 「.env.example」ファイルを 「.env」ファイルに命名を変更。または、新しく.envファイルを作成
 4. .envに以下の環境変数を追加
@@ -54,6 +54,25 @@ php artisan migrate
 ``` bash
 php artisan db:seed
 ```
+
+## 店舗情報のアップロード方法
+管理ユーザーはCSVファイルから店舗情報を一括登録することができます。
+
+**CSVファイル記入方法**
+1. 任意の場所にcsvファイルを作成もしくはshop_template.csvをコピーします
+2. 1行目に下記を記載
+```
+shop_name,area,genre,detail,image
+```
+3. 2行目以降にはカンマ区切りで詳細情報を記入します。
+下記は記入例です。
+``` text
+店舗名,地域,ジャンル,店舗概要,http://店舗画像.jpg
+```
+> [!IMPORTANT]
+> - すべての項目は入力必須です。
+> - 地域は東京都・大阪府・福岡県のいずれかを入力してください。
+> - ジャンルには「寿司」「焼肉」「イタリアン」「居酒屋」「ラーメン」のいずれかを指定してください。
 
 ## URL
 - 開発環境：http://localhost/
