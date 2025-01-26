@@ -8,7 +8,7 @@
 <div class="thanks">
     <div class="thanks__item"><span class="thanks--logo">ご予約ありがとうございます</span></div>
     <div class="thanks__item">
-        <a href="{{ url()->previous() }}" class="thanks--button">戻る</a>
+        <a href="{{ url()->previous() }}" class="submit-button">戻る</a>
     </div>
 </div>
 @endsection

@@ -26,8 +26,8 @@
     </div>
     <div class="shop-detail__block--right">
         <div class="booking__box">
-            <h2 class="booking__title">予約</h2>
-            <div class="booking__box--main">
+            <div class="booking__box__inner">
+                <h2 class="booking__title">予約</h2>
                 @livewire('confirm', ['shop' => $shop])
             </div>
         </div>

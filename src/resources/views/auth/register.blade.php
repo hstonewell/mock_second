@@ -45,7 +45,7 @@
             </p>
             @endforeach
             @endif
-            <div class="register-form__item"><input class="register-form--button" type="submit" value="登録"></div>
+            <div class="register-form__item"><input class="submit-button" type="submit" value="登録"></div>
         </form>
     </div>
     @endsection

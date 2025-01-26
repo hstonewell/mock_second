@@ -41,17 +41,17 @@
                 <a href="{{ route('search', ['genre_id' => $shop->genre->id])}}">&#035;{{ $shop->genre->genre_name }}</a>
             </div>
             <div class="shops__card--footer">
-                <a href="{{ route('detail', ['shop_id'=>$shop->id]) }}" class="shops__card--more">詳しくみる</a>
+                <a href="{{ route('detail', ['shop_id'=>$shop->id]) }}" class="submit-button">詳しくみる</a>
                 @if(Auth::check())
                 @if(in_array($shop->id, $bookmark))
-                <form action="{{ route('destroyBookmark', $shop->id) }}" method="POST">
+                <form action="{{ route('destroy.bookmark', $shop->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                     <button type="submit" class="shops__card--bookmark"><i class="fa-solid fa-heart fa-2xl" style="color: red;"></i></button>
                 </form>
                 @else
-                <form action="{{ route('storeBookmark') }}" method="POST">
+                <form action="{{ route('store.bookmark') }}" method="POST">
                     @csrf
                     <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                     <button type="submit" class="shops__card--bookmark"><i class="fa-solid fa-heart fa-2xl" style="color: #eee;"></i></button>
