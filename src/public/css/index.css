@@ -1,32 +1,26 @@
-html {
-    font-size: 87.5%;
-}
 
 /* 検索機能 */
 .shop-search__form {
     width: 50%;
+    height: 3rem;
+    position: absolute;
+    right: 0;
 }
 
 .shop-search__box {
     display: flex;
     justify-content: space-between;
+    height: 100%;
     background-color: #fff;
-    padding: 8px 15px;
+    padding: 0 1rem;
     border-radius: 5px;
     box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.4);
 }
 
 .shop-search--select {
-    width: 22%;
+    width: 28%;
     border: none;
-    font-size: 16px;
-}
-
-.shop-search--text {
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    width: 50%;
+    font-size: 1.2em;
 }
 
 .shop-search--icon {
@@ -40,9 +34,8 @@ html {
 
 .shop-search--input {
     border: none;
-    line-height: 2em;
-    font-size: 16px;
-    width: 80%;
+    font-size: 1.4em;
+    width: 60%;
 }
 
 .shop-search--input:focus {
@@ -83,11 +76,11 @@ html {
     border-radius: 5px;
     box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.4);
     background-color: #fff;
-    margin-top: 10px;
+    margin-top: 1rem;
 }
 
 .shops__card:nth-of-type(n+5) {
-    margin-top: 15px;
+    margin-top: 1.5rem;
 }
 
 .shops__card--img {
@@ -106,18 +99,18 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 15px;
+    padding: 1.5rem;
 }
 
 .shops__card--title {
-    font-size: 18px;
+    font-size: 1.8em;
     padding: 0;
     margin: 0;
 }
 
 .shops__card--tags {
-    font-size: clamp(0.9rem, 1rem, 1.2rem);
-    padding-bottom: 10px;
+    font-size: 1em;
+    padding-bottom: 1rem;
     display: flex;
     flex-wrap: wrap;
 }
@@ -138,22 +131,6 @@ html {
     margin-top: auto;
 }
 
-.shops__card--more {
-    background-color: #3560F6;
-    color: #fff;
-    border: none;
-    outline: none;
-    text-decoration: none;
-    border-radius: 5px;
-    cursor: pointer;
-    padding: 5px 15px;
-    font-size: clamp(0.7rem, 1.7vw, 1.1rem);
-}
-
-.shops__card--more:hover {
-    opacity: 0.8;
-}
-
 .shops__card--bookmark {
     border: none;
     background-color: transparent;
@@ -167,7 +144,7 @@ html {
 /* レスポンシブ */
 @media screen and (max-width: 768px) {
     .shop-search__form {
-        width: 70%;
+        width: 60%;
     }
     .shops__wrapper::before {
         width: 32%;
@@ -179,10 +156,10 @@ html {
         width: 32%;
     }
     .shops__card:nth-of-type(n+4) {
-        margin-top: 15px;
+        margin-top: 1.5rem;
     }
     .shops__card--more {
-        padding: 5px 10px;
+        padding: 0.5rem 1rem;
     }
     i.fa-heart {
         font-size: 1.7em;
@@ -191,8 +168,12 @@ html {
 
 @media screen and (max-width: 375px) {
     .shop-search__form {
-        width: 90%;
+        display: none;
     }
+    .menu-modal--search__inner {
+        display: flex;
+    }
+
     .shops__wrapper::before {
         width: 48%;
     }
@@ -201,13 +182,35 @@ html {
         width: 48%;
     }
     .shops__card {
-        width: 48%;
+        width: 100%;
+        flex-direction: row;
+        overflow: hidden;
+    }
+    .shops__card--img {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+    .shops__card--img img{
+        height: 100%;
+        object-fit: cover;
+    }
+    .shops__card--unit {
+        flex: 1;
+        /* 残りのスペースを占有 */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 1.5rem;
     }
     .shops__card:nth-of-type(n+3) {
-        margin-top: 15px;
+        margin-top: 1.5rem;
     }
     .shops__card--more {
-        padding: 5px 5px;
+        padding: 0.5rem;
     }
     i.fa-heart {
         font-size: 1.5em;

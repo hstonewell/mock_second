@@ -22,18 +22,20 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding: 15px 0px;
+    padding: 1.5rem 0px;
     margin: 0;
 }
 
 .shop-detail--back {
-    height: 25px;
-    width: 25px;
+    display: inline-block;
+    height: 2.5rem;
+    width: 2.5rem;
     background-color: #fff;
     border: none;
     border-radius: 5px;
     box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
-    margin-right: 10px;
+    margin-right: 1rem;
+    font-size: 1.5rem;
     font-weight: bold;
     color: #000;
     text-decoration: none;
@@ -41,23 +43,24 @@
 }
 
 .shop-name {
-    font-size: 24px;
+    margin: 0;
+    font-size: 2.4em;
 }
 
 .shop-tags {
     display: flex;
-    font-size: clamp(0.9rem, 1.2vw, 1rem);
-    line-height: 2.5em;
+    font-size: 1rem;
+    line-height: 2.5rem;
 }
 
 .shop-tags a{
-    margin-right: 5px;
+    margin-right: 0.5rem;
     color: #000;
     text-decoration: none;
 }
 
 .shop-detail__description {
-    font-size: clamp(1rem, 1.2vw, 1.2rem);
+    font-size: 1.2em;
 }
 
 /* レスポンシブ */
@@ -93,7 +96,7 @@
         width: 100%;
     }
     .shop-detail__block--left {
-        margin-bottom: 25px;
+        margin-bottom: 2.5rem;
     }
     .booking-confirm__box tr {
         display: flex;

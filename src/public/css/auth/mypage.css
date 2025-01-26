@@ -34,12 +34,12 @@ html {
 }
 
 .mypage__title {
-    font-size: 20px;
+    font-size: 2rem;
     line-height: 1em;
 }
 
 .mypage__name {
-    font-size: 24px;
+    font-size: 2.4em;
     line-height: 1em;
 }
 
@@ -55,12 +55,12 @@ html {
     border-radius: 5px;
     box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.4);
     background-color: #3560F6;
-    padding: 15px 20px 25px 20px;
-    margin-top: 10px;
+    padding: 1.5rem 2rem 2.5rem 2rem;
+    margin-top: 1rem;
 }
 
 .booking__card:nth-of-type(n+2) {
-    margin-top: 20px;
+    margin-top: 2rem;
 }
 
 .booking__card--header {
@@ -68,6 +68,7 @@ html {
     justify-content: space-between;
     align-items: center;
     color: #fff;
+    font-size: 1.4em;
 }
 
 .booking__card--header i {
@@ -78,13 +79,14 @@ html {
     width: 75%;
     height: auto;
     text-align: left;
-    padding: 10px, 0px, 5px, 10px;
+    padding: 1rem, 0px, 0.5rem, 1rem;
 }
 
 .booking__card--table {
     color: #fff;
     text-align: left;
     line-height: 2em;
+    font-size: 1.4em;
 }
 
 .booking__card--table th {
@@ -122,11 +124,11 @@ html {
     border-radius: 5px;
     box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.4);
     background-color: #fff;
-    margin-top: 10px;
+    margin-top: 1rem;
 }
 
 .shops__card:nth-of-type(n+3) {
-    margin-top: 20px;
+    margin-top: 2rem;
 }
 
 .shops__card--img {
@@ -145,18 +147,18 @@ html {
     flex-grow: 1;
     flex-direction: column;
     justify-content: space-between;
-    padding: 15px;
+    padding: 1.5rem;
 }
 
 .shops__card--title {
-    font-size: 18px;
+    font-size: 1.8em;
     padding: 0;
     margin: 0;
 }
 
 .shops__card--tags {
-    font-size: clamp(0.9rem, 1rem, 1.2rem);
-    padding-bottom: 10px;
+    font-size: 1em;
+    padding-bottom: 1rem;
     display: flex;
     flex-wrap: wrap;
 }
@@ -185,8 +187,8 @@ html {
     text-decoration: none;
     border-radius: 5px;
     cursor: pointer;
-    padding: 5px 15px;
-    font-size: clamp(1rem, 1.7vw, 1.1rem);
+    padding: 0.5rem 1.5rem;
+    font-size: 1em;
 }
 
 .shops__card--more:hover {
@@ -218,10 +220,10 @@ html {
         width: 100%;
     }
     .shops__card:nth-of-type(n+2) {
-        margin-top: 15px;
+        margin-top: 1.5rem;
     }
     .shops__card--more {
-        padding: 5px 10px;
+        padding: 0.5rem 1rem;
     }
     i.fa-heart {
         font-size: 1.7em;
@@ -237,18 +239,18 @@ html {
     }
     .mypage__inner--right {
         width: 100%;
-        padding-top: 80px;
+        padding-top: 8rem;
     }
     .booking__card--table {
         line-height: 1.2em;
     }
     .booking__card {
-        padding: 10px 20px 15px 20px;
+        padding: 1rem 2rem 1.5rem 2rem;
     }
     .shops__card {
         width: 100%;
     }
     .shops__card--more {
-        padding: 5px 5px;
+        padding: 0.5rem;
     }
 }
