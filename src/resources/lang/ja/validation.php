@@ -161,6 +161,9 @@ return [
         'image' => [
             'url' => '有効な画像URLを指定してください。',
             'regex' => '画像URLはjpegまたはpng形式である必要があります。'
+        ],
+        'rating' => [
+            'required' => '評価は必須項目です。'
         ]
     ],
 
@@ -184,7 +187,7 @@ return [
         'area' => '店舗エリア',
         'genre' => 'ジャンル名',
         'detail' => '店舗概要',
-        'image' => '画像URL'
+        'image' => '画像'
     ],
 
 ];
