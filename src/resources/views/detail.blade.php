@@ -23,6 +23,41 @@
         <div class="shop-detail__description">
             {{ $shop->detail }}
         </div>
+        <div class="review__wrapper">
+            <div class="review__header">
+                <a href="{{ route('review.show', ['shop_id'=>$shop->id]) }}" class="review--post-link">口コミを投稿する</a>
+            </div>
+            <div class="review__content">
+                <h3 class="review__content--button">全ての口コミ情報</h3>
+                @foreach($reviews as $review)
+                <div class="review__content__unit">
+                    <hr>
+                    @error('destroy')
+                    <p>{{ $message }}</p>
+                    @enderror
+                    @if(Auth::id()==$review->user_id)
+                    <div class="review__content--links">
+                        <a href="{{ route('review.show', ['shop_id'=>$shop->id]) }}"  class="review--post-link">口コミを編集</a>
+                        <form action="{{ route('review.destroy', ['review_id' => $review->id]) }}" method="POST" onsubmit="return confirm('本当に削除しますか？');">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="review--post-link">口コミを削除</button>
+                        </form>
+                    </div>
+                    @endif
+                    <div class="review__content--rating">
+                        @for ($i = 0; $i < $review->rating; $i++ )
+                            <i class="fa-solid fa-star fa-2x" style="color: #3560F6;"></i>
+                            @endfor
+                    </div>
+                    <div class="review__content--comment">
+                        <p>{{ $review->comment }}</p>
+                    </div>
+                    <img src="{{ $review->image }}" class="review__content--image" />
+                </div>
+                @endforeach
+            </div>
+        </div>
     </div>
     <div class="shop-detail__block--right">
         <div class="booking__box">
@@ -33,6 +68,4 @@
         </div>
     </div>
 </div>
-
-
 @endsection

@@ -1,0 +1,149 @@
+/* レビュー投稿ページ */
+.review__wrapper {
+    width: 90%;
+}
+
+.review__inner {
+    display: flex;
+    margin: 2rem 0;
+}
+
+/* レビュー投稿ページ・左側 */
+.review__left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 45%;
+    margin: 2rem;
+    border-right: 1px solid #bebebe;
+}
+
+.review__left--message {
+    font-size: 1.8em;
+    font-weight: 400;
+}
+
+.shops__card {
+    width: 60% !important;
+}
+
+/* レビュー投稿ページ・右側 */
+.review__right {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 50%;
+    padding: 0 1.5rem;
+}
+
+.review__right__unit {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.review__right--title {
+    font-size: 1.6em;
+    line-height: 2em;
+}
+
+/* 評価 */
+.review__rating {
+    align-items: center;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+.review__rating--input {
+    display: none;
+}
+
+.review__rating--label {
+    color: #ccc;
+    cursor: pointer;
+    font-size: 2.4em;
+    padding: 0 1rem;
+    transition: color 0.1s;
+}
+
+.review__rating--label:hover,
+.review__rating--label:hover~.review__rating--label,
+.review__rating--input:checked~.review__rating--label {
+    color: #3560F6;
+}
+
+/* コメント */
+.review__comment {
+    padding: 0.5rem;
+    border: 1px solid #bebebe;
+    font-size: 1.4em;
+}
+
+.review__comment-counter {
+    font-size: 0.8em;
+    text-align: right;
+}
+
+.review--error-message {
+    font-size: 1rem;
+    color: red;
+}
+
+/* レビュー画像 */
+.review__image {
+    padding: 2rem;
+    align-items: center;
+    text-align: center;
+    background-color: #fff;
+}
+
+.review__image__inner {
+    width: 100%;
+    height: 100%;
+    font-size: 1.2em;
+}
+
+.review__image--container {
+    width: 60%;
+    margin: auto;
+    text-align: right;
+}
+
+.review__image--preview {
+    width: 100%;
+}
+
+.review__image--close {
+    text-align: right;
+    border: 1px solid #bebebe;
+    border-radius: 5px;;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+
+/* フッター */
+.review__footer {
+    width: 100%;
+    text-align: center;
+    margin: 1rem;
+}
+
+.review__footer--button {
+    width: 45%;
+    padding: 0.5rem 0;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 20px;
+    background-color: #fff;
+    font-size: 1.4em;
+}
+
+.review__footer--button:hover {
+    opacity: 0.8;
+}
