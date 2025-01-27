@@ -10,6 +10,7 @@ use App\Models\Area;
 use App\Models\Bookmark;
 use App\Models\Genre;
 use App\Models\Booking;
+use App\Models\Review;
 
 use Carbon\Carbon;
 
@@ -52,7 +53,7 @@ class ShopController extends Controller
             }
         }
 
-        return redirect('/');
+        return back();
     }
 
     public function destroyBookmark(Request $request)
@@ -99,13 +100,14 @@ class ShopController extends Controller
     public function detail($id)
     {
         $shop = Shop::with(['genre', 'area'])->find($id);
+        $reviews = Review::where('shop_id', $shop->id)->orderBy('created_at', 'desc')->paginate(5);
 
         //予約可能期間
         $today = Carbon::today()->toDateString();
         $maxDate = Carbon::today()->addDays(90)->toDateString();
         $minTime = Carbon::now()->addHours(1)->toTimeString();
 
-        return view('detail', compact('shop', 'today', 'maxDate'));
+        return view('detail', compact('shop', 'reviews', 'today', 'maxDate'));
     }
 
     //予約処理
