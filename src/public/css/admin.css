@@ -1,0 +1,58 @@
+.upload {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.upload__inner {
+    background-color: white;
+    padding: 1rem;
+}
+
+.upload-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.upload-form__input {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.2em;
+    background-color: #fff;
+}
+
+::file-selector-button,
+::-webkit-file-upload-button {
+    padding: 0.5rem;
+    margin-right: 1rem;
+    background-color: transparent;
+    border: 1px solid #3560F6;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    color: #3560F6;
+    text-decoration: none;
+}
+
+/* エラー */
+.upload-form__errors--alert {
+    color: red;
+    font-size: 1rem;
+    margin: 0.5rem 0;
+}
+
+.upload-form__error {
+    padding-inline-start: 0;
+}
+
+.line-number {
+    font-weight: bold;
+    color: black;
+}
+
+.error-title {
+    color: red;
+}
