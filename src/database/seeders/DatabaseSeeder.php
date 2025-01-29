@@ -20,5 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AreasTableSeeder::class);
         $this->call(ShopsTableSeeder::class);
         Schema::enableForeignKeyConstraints();
+        $this->call(RoleAndPermissionSeeder::class);
+        $this->call(ReviewSeeder::class);
     }
 }
