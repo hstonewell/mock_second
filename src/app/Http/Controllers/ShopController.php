@@ -16,9 +16,13 @@ use Carbon\Carbon;
 
 class ShopController extends Controller
 {
-    public function index(Shop $shop) {
+    public function index(Request $request) {
 
-        $shops = Shop::with(['genre', 'area'])->get();
+        $sort = $request->input('sort', 'random');
+
+        $query = Shop::with(['genre', 'area', 'reviews']);
+        $shops = $query->inRandomOrder()->get();
+
         $areas = Area::all();
         $genres = Genre::all();
 
@@ -31,113 +35,28 @@ class ShopController extends Controller
             ->pluck('shop_id')->toArray();
         }
 
-        return view('index', compact('shops', 'areas', 'genres', 'bookmark'));
-    }
-
-    //お気に入り機能
-    public function storeBookmark(Request $request) {
-
-        $user = Auth::user();
-        $shop_id = $request->input('shop_id');
-
-        if($user) {
-            $user_id = Auth::id();
-
-            $isBookmarked = Bookmark::where('shop_id', $shop_id)
-            ->where('user_id', $user_id)
-            ->first();
-
-            if(!$isBookmarked) {
-                $shop = Shop::find($shop_id);
-                Bookmark::createBookmark($user, $shop);
-            }
-        }
-
-        return back();
-    }
-
-    public function destroyBookmark(Request $request)
-    {
-        $user_id = Auth::id();
-        $shop_id = $request->input('shop_id');
-
-        $bookmark = Bookmark::where('shop_id', $shop_id)
-        ->where('user_id', $user_id);
-
-        if($bookmark) {
-            $bookmark->delete();
-        }
-
-        return back();
-    }
-
-    //検索機能
-    public function search(Request $request)
-    {
-        $shops = Shop::with(['genre', 'area'])
-            ->AreaSearch($request->area_id)
-            ->GenreSearch($request->genre_id)
-            ->KeywordSearch($request->keyword)
-            ->get();
-        $areas = Area::all();
-        $genres = Genre::all();
-
-        $user = Auth::user();
-        $bookmark = [];
-
-        if($user) {
-            $bookmark = Bookmark::where('user_id', $user->id)
-            ->pluck('shop_id')->toArray();
-        }
-
-        $selectedArea = $request->area_id;
-        $selectedGenre = $request->genre_id;
-
-        return view('index', compact('shops', 'areas', 'genres', 'selectedArea', 'selectedGenre', 'bookmark'));
+        return view('index', compact('shops', 'areas', 'genres', 'bookmark', 'sort'));
     }
 
     //お店の詳細ページ
     public function detail($id)
     {
         $shop = Shop::with(['genre', 'area'])->find($id);
-        $reviews = Review::where('shop_id', $shop->id)->orderBy('created_at', 'desc')->paginate(5);
+        $reviews = Review::where('shop_id', $shop->id)->orderBy('created_at', 'desc')->simplePaginate(5);
+        $myReview = [];
+
+        if (Auth::check()) {
+            $myReview = Review::where('user_id', Auth::id())
+                ->where('shop_id', $id)
+                ->exists();
+        }
 
         //予約可能期間
         $today = Carbon::today()->toDateString();
         $maxDate = Carbon::today()->addDays(90)->toDateString();
         $minTime = Carbon::now()->addHours(1)->toTimeString();
 
-        return view('detail', compact('shop', 'reviews', 'today', 'maxDate'));
-    }
-
-    //予約処理
-    public function storeBooking(Request $request)
-    {
-        $user = Auth::user();
-
-        if($user) {
-            $booking = Booking::create([
-                'shop_id' => $request->shop_id,
-                'user_id'=> Auth::id(),
-                'date' => $request->date,
-                'time' => $request->time,
-                'number' => $request->number,
-            ]);
-            return redirect('done');
-        } else {
-            return redirect()->with('message', '予約するにはログインしてください');
-        }
-    }
-
-    public function destroyBooking(Request $request)
-    {
-        $booking = Booking::find($request->id);
-
-        if($booking){
-            $booking->delete();
-        }
-
-        return redirect('mypage');
+        return view('detail', compact('shop', 'reviews', 'myReview', 'today', 'maxDate'));
     }
 
     //マイページ
@@ -159,9 +78,4 @@ class ShopController extends Controller
         return view('auth.mypage', compact('userBookmarks', 'userBookings'));
     }
 
-    //予約完了ページ
-    public function viewDone()
-    {
-        return view('done');
-    }
 }
