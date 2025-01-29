@@ -61,7 +61,55 @@
 
 .shop-detail__description {
     font-size: 1.2em;
+    margin: 1rem 0;
 }
+
+/* 口コミ投稿・閲覧 */
+.review__wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.review--post-link {
+    color: #000;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.review--post-link:hover {
+    opacity: 0.8;
+}
+
+.review__content--button {
+    width: 100%;
+    background-color: #3560F6;
+    color: #fff;
+    text-align: center;
+    line-height: 2.5rem;
+}
+
+.review__content--links {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.review__content--rating {
+    margin: 1rem 0;
+}
+
+.review__content--comment {
+    font-size: 1.2em;
+}
+
+.review__content--image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
 
 /* レスポンシブ */
 @media screen and (max-width: 768px) {

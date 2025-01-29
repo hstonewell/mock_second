@@ -1,7 +1,7 @@
 
 /* 検索機能 */
 .shop-search__form {
-    width: 50%;
+    width: 55%;
     height: 3rem;
     position: absolute;
     right: 0;
@@ -10,6 +10,7 @@
 .shop-search__box {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     height: 100%;
     background-color: #fff;
     padding: 0 1rem;
@@ -17,8 +18,12 @@
     box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.4);
 }
 
+.shop-search__input {
+    display: flex;
+}
+
 .shop-search--select {
-    width: 28%;
+    width: 18%;
     border: none;
     font-size: 1.2em;
 }
@@ -35,7 +40,7 @@
 .shop-search--input {
     border: none;
     font-size: 1.4em;
-    width: 60%;
+    width: 40%;
 }
 
 .shop-search--input:focus {
@@ -106,6 +111,12 @@
     font-size: 1.8em;
     padding: 0;
     margin: 0;
+}
+
+.shops__card--rating {
+    margin-bottom: 0.5rem;
+    margin-top: 0;
+    font-size: 1em;
 }
 
 .shops__card--tags {

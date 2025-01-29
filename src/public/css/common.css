@@ -81,7 +81,7 @@ body {
     left: 0;
     right: 0;
     align-items: center;
-    z-index: 1000;
+    z-index: 2000;
 }
 
 .menu-modal__header {
@@ -93,14 +93,14 @@ body {
     height: 5rem;
     margin: 1.5rem auto;
     top: 0;
-    z-index: 1001;
+    z-index: 2001;
 }
 
 .menu-modal__header__inner {
     width: auto;
     display: flex;
     align-items: center;
-    z-index: 1001;
+    z-index: 2001;
 }
 
 .menu-modal__content {
@@ -108,6 +108,8 @@ body {
     flex-direction: column;
     align-items: center;
     translate: 0% 25%;
+    position: relative;
+    z-index: 2001;
 }
 
 .menu-modal__link {
@@ -127,7 +129,7 @@ button.menu-modal__link{
     padding: 0;
     appearance: none;
     color: #3560F6;
-    font-size: 2.8em;
+    font-size: 2.4em;
     text-decoration: none;
     line-height: 2em;
     font-family: inherit;
@@ -245,6 +247,10 @@ input.booking__number-select {
     opacity: 0.8;
 }
 
+.layout {
+    flex-grow: 1;
+}
+
 /* 予約編集のモーダル */
 .modal-overlay {
     height: 100vh;
@@ -303,7 +309,7 @@ input.booking__number-select {
     transform: translateX(-50%) translateY(-50%);
     width: 40%;
     height: 35vh;
-    background-color: #3560F6;
+    background-color: #fff;
     border-radius: 5px;
 }
 
@@ -313,20 +319,9 @@ input.booking__number-select {
 }
 
 .edited--logo {
+    color: #000;
     font-size: 1.4em;
     font-weight: 400;
-}
-
-.edited--close {
-    background-color: #003FF5;
-    color: #fff;
-    border: none;
-    outline: none;
-    text-decoration: none;
-    border-radius: 5px;
-    cursor: pointer;
-    padding: 0.8rem 1.5rem;
-    font-size: 1.6em;
 }
 
 @media screen and (max-width: 768px) {
