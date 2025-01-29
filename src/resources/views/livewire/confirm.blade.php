@@ -10,8 +10,6 @@
             @endforeach
         </select>
         <input type="number" name="number" min="1" max="10" class="booking__number-select" wire:model="number" value="{{ old('number') }}">
-        <div class="layout"></div>
-
         <table class="booking-confirm__box">
             <tr>
                 <th>Shop</th>

@@ -61,7 +61,7 @@
                 <span class="edited--logo">予約を変更しました</span>
             </div>
             <div class="edited__item">
-                <button type="submit" class="edited--close" wire:click.self="closeEdited">閉じる</button>
+                <button type="submit" class="submit-button" wire:click.self="closeEdited">閉じる</button>
             </div>
         </div>
     </div>
