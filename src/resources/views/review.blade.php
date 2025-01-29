@@ -26,14 +26,14 @@
                         <a href="{{ route('detail', ['shop_id'=>$shop->id]) }}" class="submit-button">詳しくみる</a>
                         @if(Auth::check())
                         @if($bookmarked)
-                        <form action="{{ route('bookmark.destroy', $shop->id) }}" method="POST">
+                        <form action="{{ route('bookmarks.destroy', $shop->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                             <button type="submit" class="shops__card--bookmark"><i class="fa-solid fa-heart fa-2xl" style="color: red;"></i></button>
                         </form>
                         @else
-                        <form action="{{ route('bookmark.show') }}" method="POST">
+                        <form action="{{ route('bookmarks.show') }}" method="POST">
                             @csrf
                             <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                             <button type="submit" class="shops__card--bookmark"><i class="fa-solid fa-heart fa-2xl" style="color: #eee;"></i></button>

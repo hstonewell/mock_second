@@ -18,7 +18,7 @@
                         <i class="fa-solid fa-clock fa-xl" style="color: #ffffff;"></i>
                         <p>{{ sprintf('%05d', $loop->iteration) }}</p>
                         @livewire('edit-booking', ['booking_id' => $booking->id])
-                        <form action="{{ route('booking.destroy') }}" method="POST">
+                        <form action="{{ route('bookings.destroy') }}" method="POST">
                             @method('DELETE')
                             @csrf
                             <input type="hidden" name="id" value="{{ $booking['id'] }}">
@@ -67,7 +67,7 @@
                             </div>
                             <div class="shops__card--footer">
                                 <a href="{{ route('detail', ['shop_id'=>$shop->id]) }}" class="submit-button">詳しくみる</a>
-                                <form action="{{ route('bookmark.destroy', $shop->id) }}" method="POST">
+                                <form action="{{ route('bookmarks.destroy', $shop->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <input type="hidden" name="shop_id" value="{{ $shop->id }}">
