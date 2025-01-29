@@ -7,14 +7,14 @@ use Livewire\WithFileUploads;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
-use App\Models\User;
-use App\Models\Shop;
 use App\Models\Review;
 
 class ReviewForm extends Component
 {
     use WithFileUploads;
+    use AuthorizesRequests;
 
     public $shop_id;
     public $rating;
@@ -33,6 +33,8 @@ class ReviewForm extends Component
             ->first();
 
         if ($review) {
+            $this->authorize('update', $review);
+
             $this->rating = $review->rating;
             $this->comment = $review->comment;
             $this->image = $review->image;

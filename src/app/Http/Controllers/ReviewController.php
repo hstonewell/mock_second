@@ -30,10 +30,8 @@ class ReviewController extends Controller
     {
         $review = Review::where('id', $review_id)->first();
 
-        if ($review->user_id === Auth::id()) {
-            $review->delete();
-            return redirect()->route('detail', ['shop_id' => $review->shop_id]);
-        }
+        $this->authorize('delete', $review);
+        $review->delete();
 
         return redirect()->route('detail', ['shop_id' => $review->shop_id])->withErrors('destroy', '削除権限がありません。');
     }
