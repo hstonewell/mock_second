@@ -25,7 +25,11 @@
         </div>
         <div class="review__wrapper">
             <div class="review__header">
-                <a href="{{ route('review.show', ['shop_id'=>$shop->id]) }}" class="review--post-link">口コミを投稿する</a>
+                @can('create', App\Models\Review::class)
+                @if(!$myReview)
+                <a href="{{ route('review.create', ['shop_id'=>$shop->id]) }}" class="review--post-link">口コミを投稿する</a>
+                @endif
+                @endcan
             </div>
             <div class="review__content">
                 <h3 class="review__content--button">全ての口コミ情報</h3>
@@ -35,16 +39,18 @@
                     @error('destroy')
                     <p>{{ $message }}</p>
                     @enderror
-                    @if(Auth::id()==$review->user_id)
                     <div class="review__content--links">
-                        <a href="{{ route('review.show', ['shop_id'=>$shop->id]) }}"  class="review--post-link">口コミを編集</a>
+                        @can('update', $review)
+                        <a href="{{ route('review.create', ['shop_id'=>$shop->id]) }}" class="review--post-link">口コミを編集</a>
+                        @endcan
+                        @can('delete', $review)
                         <form action="{{ route('review.destroy', ['review_id' => $review->id]) }}" method="POST" onsubmit="return confirm('本当に削除しますか？');">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="review--post-link">口コミを削除</button>
                         </form>
+                        @endcan
                     </div>
-                    @endif
                     <div class="review__content--rating">
                         @for ($i = 0; $i < $review->rating; $i++ )
                             <i class="fa-solid fa-star fa-2x" style="color: #3560F6;"></i>
@@ -57,6 +63,7 @@
                 </div>
                 @endforeach
             </div>
+            {{ $reviews->links() }}
         </div>
     </div>
     <div class="shop-detail__block--right">
