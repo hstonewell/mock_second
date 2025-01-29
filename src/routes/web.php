@@ -3,8 +3,10 @@
 use App\Http\Controllers\CsvController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\BookmarkController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ReviewController;
-use Flynsarmy\CsvSeeder\CsvSeeder;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,24 +19,39 @@ use Flynsarmy\CsvSeeder\CsvSeeder;
 |
 */
 
-Route::get('/', [ShopController::class, 'index']);
-Route::get('/search', [ShopController::class, 'search'])->name('search');
+Route::get('/', [ShopController::class, 'index'])->name('index');
+Route::get('/search', [SearchController::class, 'search'])->name('search');
 Route::get('/detail/{shop_id}', [ShopController::class, 'detail'])->name('detail');
 
-//予約・お気に入り
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::post('/bookmarks', [ShopController::class, 'storeBookmark'])->name('bookmark.show');
-    Route::delete('/bookmarks', [ShopController::class, 'destroyBookmark'])->name('bookmark.destroy');
-    Route::get('/mypage', [ShopController::class, 'viewMyPage'])->name('mypage.show');
-    Route::post('/bookings', [ShopController::class, 'storeBooking'])->name('booking.store');;
-    Route::delete('/bookings', [ShopController::class, 'destroyBooking'])->name('booking.destroy');
-    Route::get('/done', [ShopController::class, 'viewDone'])->name('done');
+
+    // 一般ユーザ
+    Route::middleware('role:user')->group(function () {
+        // マイページ表示
+        Route::get('/mypage', [ShopController::class, 'viewMyPage'])->name('mypage.show');
+
+        // お気に入り
+        Route::post('/bookmarks', [BookmarkController::class, 'store'])->name('bookmarks.show');
+        Route::delete('/bookmarks', [BookmarkController::class, 'destroy'])->name('bookmarks.destroy');
+
+        // 予約
+        Route::post('/bookings', [BookingController::class, 'store'])->name('bookings.store');;
+        Route::delete('/bookings', [BookingController::class, 'destroy'])->name('bookings.destroy');
+        Route::get('/done', [BookingController::class, 'viewDone'])->name('done');
+
+        // 評価機能機能
+        Route::get('/review/{shop_id}', [ReviewController::class, 'review'])->name('review.create');
+    });
+
+    // 管理ユーザ
+    Route::middleware('role:admin')->group(function () {
+
+        // CSVインポート
+        Route::get('/upload', [CsvController::class, 'upload'])->name('upload.show');
+        Route::post('/upload', [CsvController::class, 'importCsv'])->name('csv.store');
+    });
+
+    Route::middleware('permission:delete_review')->group(function (){
+        Route::delete('/delete/{review_id}', [ReviewController::class, 'destroy'])->name('review.destroy');
+    });
 });
-
-// 追加機能：CSVインポート
-Route::get('/upload', [CsvController::class, 'upload'])->name('upload.show');
-Route::post('/upload', [CsvController::class, 'importCsv'])->name('csv.store');
-
-// 追加機能：評価投稿
-Route::get('/review/{shop_id}', [ReviewController::class, 'review'])->name('review.show');
-Route::delete('/delete/{review_id}', [ReviewController::class, 'destroy'])->name('review.destroy');
