@@ -9,6 +9,16 @@ class Shop extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'shop_name',
+        'area_id',
+        'genre_id',
+        'detail',
+        'image'
+    ];
+
     public function area()
     {
         /* 店0以上:エリア1 */
@@ -33,6 +43,11 @@ class Shop extends Model
         return $this->hasMany(Booking::class, 'shop_id');
     }
 
+    public function reviews()
+    {
+        return $this->hasMany(Review::class, 'shop_id');
+    }
+
     /* 検索 */
     public function scopeAreaSearch($query, $area_id)
     {
@@ -52,4 +67,11 @@ class Shop extends Model
             $query->where('shop_name', 'like', '%' . $keyword . '%');
         }
     }
+
+    /* 平均評価 */
+    public function getAverageRatingAttribute()
+    {
+        return $this->reviews()->avg('rating');
+    }
+
 }
