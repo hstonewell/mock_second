@@ -13,21 +13,18 @@ class AreasTableSeeder extends CsvSeeder
      *
      * @return void
      */
-
-    public function __construct()
-    {
-        $this->table = 'areas';
-        $this->filename = base_path() . '/database/seeders/csvs/area_utf8.csv';
-    }
-
     public function run()
     {
-        // Recommended when importing larger CSVs
-        DB::disableQueryLog();
-
-        // Uncomment the below to wipe the table clean before populating
-        DB::table($this->table)->truncate();
-
-        parent::run();
+        $param = [
+            'area_name' => '東京都'
+        ];
+        DB::table('areas')->insert($param);
+        $param = [
+            'area_name' => '大阪府'
+        ];
+        DB::table('areas')->insert($param);
+        $param = [
+            'area_name' => '福岡県'
+        ];
     }
 }
