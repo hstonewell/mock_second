@@ -16,7 +16,7 @@
 - MySQL8.0.26
 
 ## テーブル設計
-![alt](table.png)
+![alt](table.jpg)
 
 ## ER図
 ![alt](er.png)
@@ -98,7 +98,7 @@ shop_name,area,genre,detail,image
 ![「口コミを投稿」のボタンが出てきます](review-button.png)
 - 書き込んだあとはレビューを編集・削除することができます。
 ![編集および削除ボタンが出てきます](review-button.png)
-> ![NOTE]
+> [!NOTE]
 > - 口コミの投稿は一店舗につき一度までです。
 > - 管理ユーザと店舗代表者は口コミの投稿はできません。
 > - 管理ユーザはすべての書き込みを削除することができます。
