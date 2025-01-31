@@ -24,8 +24,6 @@ class RoleAndPermissionSeeder extends Seeder
             'assign_manager',
             'edit_shop',
             'delete_review',
-            'book_restaurant',
-            'post_review'
         ];
 
         foreach ($permissions as $permission) {
@@ -40,12 +38,12 @@ class RoleAndPermissionSeeder extends Seeder
         // パーミッション付与
         $adminRole->givePermissionTo(['assign_manager', 'edit_shop', 'delete_review']);
         $managerRole->givePermissionTo(['edit_shop']);
-        $userRole->givePermissionTo(['post_review', 'delete_review', 'book_restaurant']);
+        $userRole->givePermissionTo(['delete_review']);
 
         // 管理者ユーザのダミーデータ作成
         $admin = User::create([
             'name' => '管理者',
-            'email' => 'admin@resetestuser.com',
+            'email' => 'admin@testuser.com',
             'password' => Hash::make('Admin-1234'),
             'email_verified_at' => now(),
         ]);
@@ -54,7 +52,7 @@ class RoleAndPermissionSeeder extends Seeder
         // 店舗代表者のダミーデータ作成
         $manager = User::create([
             'name' => '店舗代表者1',
-            'email' => 'testmanager1@resetestuser.com',
+            'email' => 'testmanager1@testuser.com',
             'password' => Hash::make('Manager1-1234'),
             'email_verified_at' => now(),
         ]);
