@@ -3,7 +3,7 @@
         <i class="fa-solid fa-bars fa-2xl" style="color: #ffffff;"></i>
     </button>
     <h1 class="header__logo">Rese</h1>
-
+    <div class="header__inner--left--layout" hidden></div>
     @if($showMenu)
     <div class="menu-modal">
         <div class="menu-modal__header">
@@ -29,7 +29,7 @@
             <a class="menu-modal__link" href="/mypage">Mypage</a>
             @endhasanyrole
             @hasanyrole('admin')
-            <a class="menu-modal__link" href="/upload">Admin</a>
+            <a class="menu-modal__link" href="/admin">Admin</a>
             @endhasanyrole
             @endauth
         </div>

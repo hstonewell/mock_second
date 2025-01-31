@@ -47,8 +47,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::middleware('role:admin')->group(function () {
 
         // CSVインポート
-        Route::get('/upload', [CsvController::class, 'upload'])->name('upload.show');
-        Route::post('/upload', [CsvController::class, 'importCsv'])->name('csv.store');
+        Route::get('/admin', [CsvController::class, 'upload'])->name('admin.show');
+        Route::post('/admin', [CsvController::class, 'importCsv'])->name('csv.store');
     });
 
     Route::middleware('permission:delete_review')->group(function (){
