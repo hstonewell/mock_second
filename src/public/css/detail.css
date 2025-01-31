@@ -137,11 +137,16 @@
 }
 
 .review__content--rating {
-    margin: 1rem 0;
+    margin-bottom: 1rem;
 }
 
 .review__content--comment {
     font-size: 1.2em;
+}
+
+.review__content--comment p {
+    white-space: pre-wrap;
+    margin: 0;
 }
 
 .review__content--image {
@@ -190,7 +195,7 @@
         object-fit: scale-down;
     }
     .review__content__layout {
-        margin: auto;
+        margin: 0;
     }
 }
 
