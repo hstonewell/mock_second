@@ -13,7 +13,7 @@ class CsvController extends Controller
 {
     public function upload()
     {
-        return view ('upload');
+        return view ('admin');
     }
 
     public function importCsv(Request $request)
@@ -91,9 +91,9 @@ class CsvController extends Controller
     private function convertAreaNameToId($name)
     {
         return [
-            '東京都' => 13,
-            '大阪府' => 27,
-            '福岡県' => 40,
+            '東京都' => 1,
+            '大阪府' => 2,
+            '福岡県' => 3,
         ][$name] ?? null;
     }
 

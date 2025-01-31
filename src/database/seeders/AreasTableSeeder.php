@@ -26,5 +26,6 @@ class AreasTableSeeder extends CsvSeeder
         $param = [
             'area_name' => '福岡県'
         ];
+        DB::table('areas')->insert($param);
     }
 }
