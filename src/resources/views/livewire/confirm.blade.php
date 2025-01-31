@@ -28,11 +28,16 @@
                 <td>{{ $number }}</td>
             </tr>
         </table>
+        <div class="layout"></div>
         @if(session('message'))
         <div class="booking__box--message">{{ session('message') }}</div>
         @endif
         <div class="booking__box--footer">
+            @role('user')
             <button class="booking-submit" type="submit">予約する</button>
+            @else
+            <p class="booking-submit--disable">予約権限がありません</p>
+            @endrole
         </div>
     </form>
 </div>
