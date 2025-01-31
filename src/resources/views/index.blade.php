@@ -2,12 +2,13 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/index.css')}}">
+<link rel="stylesheet" href="{{ asset('css/shops.css')}}">
 @endsection
 
 @section('search')
 <div class="shop-search__form">
     <div class="shop-search__box">
-        <form class="shop-search__input" action="{{ route('search') }}" method="GET">
+        <form class="shop-search__unit" action="{{ route('search') }}" method="GET">
             @csrf
             <select name="sort" class="shop-search--select" onchange="this.form.submit(this.form)">
                 <option value="random" {{ $sort == 'random' ? 'selected' : '' }}>ランダム表示</option>
