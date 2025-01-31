@@ -1,18 +1,36 @@
 .shop-detail__wrapper {
     width: 90vw;
-    display: flex;
-    justify-content: space-between;
+    margin: auto;
+    margin-top: 4rem;
 }
 
-.shop-detail__block--left,
-.shop-detail__block--right {
+.shop-detail__inner {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.shop-detail__block--left {
     width: 47%;
     display: flex;
     flex-direction: column;
 }
 
+.shop-detail__block--right {
+    width: 40%;
+    position: fixed;
+    right: 5vw;
+    /* max-height: calc(100vh - 8rem); */
+    overflow-y: auto;
+}
+
 /* お店の詳細 */
-.shop-detail__block img{
+.shop-detail__detail {
+    width: 100%;
+}
+
+.shop-detail__img{
     width: 100%;
     display: block;
     object-fit: cover;
@@ -61,14 +79,13 @@
 
 .shop-detail__description {
     font-size: 1.2em;
-    margin: 1rem 0;
 }
 
 /* 口コミ投稿・閲覧 */
 .review__wrapper {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 47%;
 }
 
 .review--post-link {
@@ -83,6 +100,14 @@
     opacity: 0.8;
 }
 
+.review__content__inner {
+    display: none;
+}
+
+#reviews:checked~.review__content__inner {
+    display: block;
+}
+
 .review__content--button {
     width: 100%;
     background-color: #3560F6;
@@ -91,9 +116,24 @@
     line-height: 2.5rem;
 }
 
+.review__content__unit {
+    margin-bottom: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid;
+}
+
+.review__content__unit:first-of-type {
+    border: none;
+}
+
 .review__content--links {
     display: flex;
     justify-content: flex-end;
+}
+
+.review__content__layout {
+    display: flex;
+    flex-direction: column;
 }
 
 .review__content--rating {
@@ -110,7 +150,6 @@
     height: auto;
 }
 
-
 /* レスポンシブ */
 @media screen and (max-width: 768px) {
     .shop-detail__block--left {
@@ -118,7 +157,9 @@
     }
     .shop-detail__block--right {
         width: 55%;
+        position: static;
     }
+
     .booking-date {
         width: auto;
     }
@@ -133,10 +174,31 @@
     .booking__box--footer {
         position: unset;
     }
+
+    /* レビュー */
+    .review__wrapper {
+        width: 100%;
+    }
+    .review__content__unit {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+    .review__content--image {
+        width: 100%;
+        height: auto;
+        object-fit: scale-down;
+    }
+    .review__content__layout {
+        margin: auto;
+    }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 430px) {
     .shop-detail__wrapper {
+        flex-direction: column;
+    }
+    .shop-detail__inner {
         flex-direction: column;
     }
     .shop-detail__block--left,
@@ -144,7 +206,7 @@
         width: 100%;
     }
     .shop-detail__block--left {
-        margin-bottom: 2.5rem;
+        margin-bottom: 1rem;
     }
     .booking-confirm__box tr {
         display: flex;

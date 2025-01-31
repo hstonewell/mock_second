@@ -1,6 +1,7 @@
 /* レビュー投稿ページ */
 .review__wrapper {
     width: 90%;
+    margin-top: 4rem;
 }
 
 .review__inner {
@@ -15,6 +16,7 @@
     align-items: center;
     width: 45%;
     margin: 2rem;
+    padding-right: 2rem;
     border-right: 1px solid #bebebe;
 }
 
@@ -146,4 +148,46 @@
 
 .review__footer--button:hover {
     opacity: 0.8;
+}
+
+/* レスポンシブデザイン */
+@media screen and (max-width: 768px) {
+    .review__inner {
+        flex-direction: column;
+        margin: 0;
+    }
+    .review__left,
+    .review__right {
+        width: 100%;
+        margin: 2rem 0;
+        padding: 0;
+    }
+    .review__left {
+        border: none;
+    }
+    .review__left--message {
+    font-size: 1.6em;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .review__left,
+    .review__right {
+        margin: 1rem 0;
+    }
+    .review__left--message {
+        margin: 0.5rem 0;
+    }
+    .shops__card {
+        width: 100% !important;
+    }
+    .shops__card--img {
+        height: auto !important;
+    }
+    .submit-button {
+        padding: 0.5rem
+    }
+    .review__rating--label {
+        padding: 0 0.5rem;
+    }
 }

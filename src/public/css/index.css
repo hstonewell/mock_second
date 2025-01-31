@@ -1,46 +1,53 @@
 
 /* 検索機能 */
 .shop-search__form {
-    width: 55%;
-    height: 3rem;
-    position: absolute;
-    right: 0;
+    width: 520px;
 }
 
 .shop-search__box {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    height: 100%;
     background-color: #fff;
-    padding: 0 1rem;
+    padding: 0.5rem;
     border-radius: 5px;
-    box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.4);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.shop-search__input {
+.shop-search__unit {
     display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
 }
 
 .shop-search--select {
-    width: 18%;
     border: none;
-    font-size: 1.2em;
+    font-size: 14px;
+    color: #444;
+    padding: 4px;
+    cursor: pointer;
+    width: 18%;
 }
 
 .shop-search--icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     border: none;
-    background-color: transparent;
-    cursor: pointer;
+    background: transparent;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    color: #666;
 }
 
 .shop-search--input {
+    width: 100%;
     border: none;
-    font-size: 1.4em;
-    width: 40%;
+    font-size: 14px;
+    padding: 4px;
+    flex: 1;
+}
+
+.shop-search--input::placeholder {
+    color: #999;
 }
 
 .shop-search--input:focus {
@@ -57,6 +64,7 @@
     justify-content: space-between;
     flex-wrap: wrap;
     width: 90vw;
+    margin-top: 4rem;
 }
 
 .shops__wrapper::before {
@@ -76,80 +84,10 @@
 /* お店カード */
 .shops__card {
     width: 24%;
-    display: flex;
-    flex-direction: column;
-    border-radius: 5px;
-    box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.4);
-    background-color: #fff;
-    margin-top: 1rem;
 }
 
 .shops__card:nth-of-type(n+5) {
     margin-top: 1.5rem;
-}
-
-.shops__card--img {
-    margin: 0;
-}
-
-.shops__card--img img{
-    width: 100%;
-    display: block;
-    object-fit: cover;
-    border-radius: 5px 5px 0px 0px;
-}
-
-.shops__card--unit {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 1.5rem;
-}
-
-.shops__card--title {
-    font-size: 1.8em;
-    padding: 0;
-    margin: 0;
-}
-
-.shops__card--rating {
-    margin-bottom: 0.5rem;
-    margin-top: 0;
-    font-size: 1em;
-}
-
-.shops__card--tags {
-    font-size: 1em;
-    padding-bottom: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.shops__card--tags a {
-    color: #000;
-    text-decoration: none;
-}
-.shops__card--tags a:hover {
-    opacity: 0.8;
-}
-
-.shops__card--footer {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: auto;
-}
-
-.shops__card--bookmark {
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-}
-
-.shops__card--bookmark:hover {
-    opacity: 0.8;
 }
 
 /* レスポンシブ */
@@ -158,72 +96,35 @@
         width: 60%;
     }
     .shops__wrapper::before {
-        width: 32%;
+        width: 48%;
     }
     .shops__wrapper::after {
-        width: 32%;
+        width: 48%;
     }
     .shops__card {
-        width: 32%;
+        width: 48%;
     }
     .shops__card:nth-of-type(n+4) {
         margin-top: 1.5rem;
     }
-    .shops__card--more {
-        padding: 0.5rem 1rem;
-    }
-    i.fa-heart {
-        font-size: 1.7em;
-    }
 }
 
-@media screen and (max-width: 375px) {
-    .shop-search__form {
-        display: none;
-    }
-    .menu-modal--search__inner {
-        display: flex;
+@media screen and (max-width: 430px) {
+    .shops__wrapper {
+        margin-top: 7rem;
     }
 
     .shops__wrapper::before {
-        width: 48%;
-    }
-
-    .shops__wrapper::after {
-        width: 48%;
-    }
-    .shops__card {
         width: 100%;
-        flex-direction: row;
-        overflow: hidden;
     }
-    .shops__card--img {
-        width: 50%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
+    .shops__wrapper::after {
+        width: 100%;
     }
-    .shops__card--img img{
-        height: 100%;
-        object-fit: cover;
+    /* 検索フォーム */
+    .shop-search__form {
+        width: 100%;
     }
-    .shops__card--unit {
-        flex: 1;
-        /* 残りのスペースを占有 */
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 1.5rem;
-    }
-    .shops__card:nth-of-type(n+3) {
-        margin-top: 1.5rem;
-    }
-    .shops__card--more {
-        padding: 0.5rem;
-    }
-    i.fa-heart {
-        font-size: 1.5em;
+    .shop-search__box {
+        margin-bottom: 0.5rem;
     }
 }

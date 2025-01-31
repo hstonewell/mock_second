@@ -21,45 +21,47 @@ body {
 
 /* メニュー */
 .header {
-    display: flex;
-    width: 90vw;
-    height: 5rem;
-    margin: 1.5rem auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 1000;
+    background: transparent;
 }
 
 .header__inner {
+    width: 90%;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
-    width: 90vw;
-    z-index: 0;
+    height: 100%;
 }
 
 .header__inner--left {
     display: flex;
-    justify-content: center;
     align-items: center;
-    position: absolute;
-    left: 0;
+    height: 80px;
+    gap: 16px;
+}
+
+.header__logo {
+    color: #3560F6;
+    font-size: 24px;
+    font-weight: bold;
 }
 
 .menu-button {
     border: none;
     background-color: #3560F6;
-    width: 3rem;
-    height: 3rem;
+    width: 42px;
+    height: 42px;
     border-radius: 5px;
-    margin-right: 1.5rem;
-    box-shadow: 5px 5px 8px 0px rgba(0, 0, 0, 0.4);
+    display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
-}
-
-.header__logo {
-    color: #3560F6;
-    z-index: 999;
+    cursor: pointer;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .icon::before {
@@ -70,74 +72,56 @@ body {
 
 /* モーダル */
 .menu-modal {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
-    text-align: center;
     position: fixed;
-    background-color: #fff;
     top: 0;
     left: 0;
-    right: 0;
-    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background: white;
     z-index: 2000;
+    display: flex;
+    flex-direction: column;
 }
 
 .menu-modal__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    width: 90vw;
-    height: 5rem;
-    margin: 1.5rem auto;
-    top: 0;
-    z-index: 2001;
-}
-
-.menu-modal__header__inner {
-    width: auto;
-    display: flex;
-    align-items: center;
-    z-index: 2001;
+    padding: 20px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 1.2rem 0;
 }
 
 .menu-modal__content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    translate: 0% 25%;
-    position: relative;
-    z-index: 2001;
+    justify-content: center;
+    flex: 1;
+    gap: 32px;
 }
 
 .menu-modal__link {
     color: #3560F6;
-    font-size: 2.4em;
+    font-size: 24px;
     text-decoration: none;
-    line-height: 2em;
-    font-family: inherit;
-    font-weight: normal;
+    transition: opacity 0.2s;
 }
 
-button.menu-modal__link{
+.menu-modal__link:hover {
+    text-decoration: underline;
+}
+
+button.menu-modal__link {
     background-color: transparent;
     border: none;
     cursor: pointer;
     outline: none;
     padding: 0;
     appearance: none;
-    color: #3560F6;
-    font-size: 2.4em;
+    color:#3560F6;
     text-decoration: none;
     line-height: 2em;
     font-family: inherit;
     font-weight: normal;
-}
-
-.menu-modal__link:hover {
-    text-decoration: underline;
 }
 
 /* コンテンツ */
@@ -148,12 +132,11 @@ button.menu-modal__link{
     margin-bottom: 1.5rem;
 }
 
-/* 予約 */
+/* 予約フォーム */
 .booking__box {
     display: flex;
     flex-direction: column;
     border-radius: 5px;
-    box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.4);
     background-color: #3560F6;
 }
 
@@ -249,6 +232,12 @@ input.booking__number-select {
 
 .layout {
     flex-grow: 1;
+}
+
+.booking-submit--disable {
+    margin: 0 auto;
+    color: #fff;
+    font-size: 1.2em;
 }
 
 /* 予約編集のモーダル */
@@ -348,7 +337,7 @@ input.booking__number-select {
     }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 430px) {
     .modal-content,
     .edited {
         width: 90vw;
@@ -356,8 +345,23 @@ input.booking__number-select {
     .booking-confirm__box tr {
         display: flex;
     }
-
     .submit-button {
-        padding: 0.5rem;
+        font-size: 1em;
+    }
+    /* ヘッダ */
+    .header {
+        background-color: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .header__inner {
+        flex-direction: column;
+    }
+    .header__inner--left {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .header__inner--left--layout {
+        display: block;
+        width: 42px;
     }
 }

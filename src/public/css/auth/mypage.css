@@ -3,6 +3,7 @@ html {
 }
 .mypage__wrapper {
     width: 90vw;
+    margin-top: 4rem;
 }
 
 .mypage__wrapper__inner {
@@ -30,7 +31,7 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    height: 10vh;
+    height: 10rem;
 }
 
 .mypage__title {
@@ -118,91 +119,11 @@ html {
 }
 
 .shops__card {
-    width: 45%;
-    display: flex;
-    flex-direction: column;
-    border-radius: 5px;
-    box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.4);
-    background-color: #fff;
-    margin-top: 1rem;
+    width: 47%;
 }
 
 .shops__card:nth-of-type(n+3) {
     margin-top: 2rem;
-}
-
-.shops__card--img {
-    margin: 0;
-}
-
-.shops__card--img img{
-    width: 100%;
-    display: block;
-    object-fit: cover;
-    border-radius: 5px 5px 0px 0px;
-}
-
-.shops__card--unit {
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 1.5rem;
-}
-
-.shops__card--title {
-    font-size: 1.8em;
-    padding: 0;
-    margin: 0;
-}
-
-.shops__card--tags {
-    font-size: 1em;
-    padding-bottom: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.shops__card--tags a {
-    color: #000;
-    text-decoration: none;
-}
-.shops__card--tags a:hover {
-    opacity: 0.8;
-}
-
-.shops__card--footer {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: auto;
-}
-
-.shops__card--more {
-    background-color: #3560F6;
-    color: #fff;
-    border: none;
-    outline: none;
-    text-decoration: none;
-    border-radius: 5px;
-    cursor: pointer;
-    padding: 0.5rem 1.5rem;
-    font-size: 1em;
-}
-
-.shops__card--more:hover {
-    opacity: 0.8;
-}
-
-.shops__card--bookmark {
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-}
-
-.shops__card--bookmark:hover {
-    opacity: 0.8;
 }
 
 /* レスポンシブ */
@@ -216,21 +137,15 @@ html {
     .booking__card--header p {
         width: 65%;
     }
-    .shops__card {
-        width: 100%;
-    }
     .shops__card:nth-of-type(n+2) {
         margin-top: 1.5rem;
     }
-    .shops__card--more {
-        padding: 0.5rem 1rem;
-    }
-    i.fa-heart {
-        font-size: 1.7em;
+    .shops__card {
+        width: 100%;
     }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 430px) {
     .mypage__wrapper__inner {
         flex-direction: column;
     }
@@ -239,7 +154,7 @@ html {
     }
     .mypage__inner--right {
         width: 100%;
-        padding-top: 8rem;
+        padding-top: 3rem;
     }
     .booking__card--table {
         line-height: 1.2em;
@@ -247,10 +162,7 @@ html {
     .booking__card {
         padding: 1rem 2rem 1.5rem 2rem;
     }
-    .shops__card {
-        width: 100%;
-    }
-    .shops__card--more {
-        padding: 0.5rem;
+    .mypage__name {
+        display: none;
     }
 }
