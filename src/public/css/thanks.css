@@ -11,14 +11,6 @@
     background-color: #fff;
     padding: 30px 20px;
     margin-top: 6rem;
-
-    @media screen and (max-width: 768px) {
-        width: 60%;
-    }
-
-    @media screen and (max-width: 430px) {
-        width: 90%;
-    }
 }
 
 .thanks__item {
@@ -30,4 +22,16 @@
 .thanks--logo {
     font-size: 1.5em;
     font-weight: 400;
+}
+
+@media screen and (max-width: 768px) {
+    .thanks{
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .thanks{
+        width: 90%;
+    }
 }
