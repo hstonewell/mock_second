@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Support\Facades\Auth;
+
 class Booking extends Model
 {
     use HasFactory;
@@ -27,5 +29,12 @@ class Booking extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function scopeLastBooking($query, $shop_id, $user_id)
+    {
+        $query->where('user_id', $user_id)
+            ->where('shop_id', $shop_id)
+            ->orderBy('date', 'desc');
     }
 }

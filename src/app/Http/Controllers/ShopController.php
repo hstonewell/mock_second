@@ -42,21 +42,33 @@ class ShopController extends Controller
     public function detail($id)
     {
         $shop = Shop::with(['genre', 'area'])->find($id);
-        $reviews = Review::where('shop_id', $shop->id)->orderBy('created_at', 'desc')->simplePaginate(5);
-        $myReview = [];
 
-        if (Auth::check()) {
-            $myReview = Review::where('user_id', Auth::id())
-                ->where('shop_id', $id)
-                ->exists();
+        $myReview = Auth::check()
+        ? Review::where('user_id', Auth::id())->where('shop_id', $id)->first()
+        : null;
+
+        // 自分のレビューを除外した一覧
+        $reviews = Review::where('shop_id', $shop->id)
+        ->when($myReview, function ($query) {
+            return $query->where('user_id', '!=', Auth::id());
+        })
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+        $lastBooking = Booking::lastBooking($shop->id, Auth::id())->first();
+
+        $canPostReview = false;
+        if ($lastBooking) {
+            $possibleTime = Carbon::parse($lastBooking->date)->setTimeFromTimeString($lastBooking->time);
+            $canPostReview = $possibleTime <= Carbon::now();
         }
 
-        //予約可能期間
+        // 予約フォームの予約可能期間
         $today = Carbon::today()->toDateString();
         $maxDate = Carbon::today()->addDays(90)->toDateString();
         $minTime = Carbon::now()->addHours(1)->toTimeString();
 
-        return view('detail', compact('shop', 'reviews', 'myReview', 'today', 'maxDate'));
+        return view('detail', compact('shop', 'reviews', 'myReview', 'today', 'maxDate','lastBooking', 'canPostReview'));
     }
 
     //マイページ
